@@ -14,9 +14,9 @@ client.on('message', message => {
   }
 });
 
-client.on('message', msg => {
-  if (msg.content === '!ping') {
-    msg.reply('Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+client.on('message', message => {
+  if (message.content === '!ping') {
+    message.reply('Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}');
   }
 });
 
