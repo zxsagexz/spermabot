@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const hook = new Discord.WebhookClient('369098418767003648', 'jS16WdUKcK82waymnUkXljnx8iPR7Ff9l_Dpla7NZYY9RSg4k5HBwKJwsr9cYJhDGo7n');
+hook.send('I am now alive!');
 
 
 client.on('ready', () => {
@@ -10,16 +12,6 @@ client.on('message', message => {
   if (message.content === '!picture') {
     message.reply(message.author.avatarURL);
   }
-});
-
-// Create an event listener for new guild members
-client.on('guildMemberAdd', member => {
-  // Send the message to a designated channel on a server:
-  const channel = member.guild.channels.find('name', 'member-log');
-  // Do nothing if the channel wasn't found on this server
-  if (!channel) return;
-  // Send the message, mentioning the member
-  channel.send(`Welcome to the server, ${member}`);
 });
 
 client.on('ready', () => {
