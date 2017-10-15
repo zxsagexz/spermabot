@@ -16,7 +16,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content === '!ping') {
-    message.reply('Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}');
+    message.reply('Pong! Your ping is sperma');
   }
 });
 
