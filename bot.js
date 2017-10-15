@@ -38,4 +38,4 @@ client.on('message', function(message) {
 });
 
 // THIS  MUST  BE  THIS  WAY
-client.login(("l488@mail.ua", "Asder1488");
+client.login(process.env.BOT_TOKEN);
