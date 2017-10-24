@@ -22,12 +22,9 @@ client.on('message', message => {
 
 
 client.on('ready', () => {
-client.user.setGame('ʕ•́ᴥ•̀ʔ', 'https://twitch.tv/antimamba777');
+client.user.setGame('ʕ•́ᴥ•̀ʔ', 'https://vk.com/waffen');
 });
 
-client.on('ready', () => {
-client.user.setGame('Sperma', 'https://twitch.tv/antimamba777');
-});
 
 client.on('message', function(message) {
     if (message.content == "!clear") {
