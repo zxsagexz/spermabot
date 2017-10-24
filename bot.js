@@ -20,10 +20,12 @@ client.on('message', message => {
   }
 });
 
+client.on('message', function(message) {
+        client.reply(message, "Заткнись");
+});
 
 client.on('ready', () => {
 client.user.setGame('ʕ•́ᴥ•̀ʔ СПЕРМА ХУЙ ГОВНО', 'https://www.twitch.tv/antimamba777');
-  setInterval(() => client.user.setGame('МАЛАФЬЯ', 'https://www.twitch.tv/antimamba777'); }, 10000);
 });
 
 
