@@ -22,7 +22,7 @@ client.on('message', message => {
 
 
 client.on('ready', () => {
-client.user.setGame('ʕ•́ᴥ•̀ʔ', 'https://twitch.tv/antimamba777');
+client.user.setGame('ʕ•́ᴥ•̀ʔ СПЕРМА ХУЙ ГОВНО', 'https://www.twitch.tv/antimamba777');
 });
 
 
