@@ -22,7 +22,7 @@ client.on('message', message => {
 
 
 client.on('ready', () => {
-client.user.setGame('ʕ•́ᴥ•̀ʔ', 'https://vk.com/waffen');
+client.user.setGame('ʕ•́ᴥ•̀ʔ', 'https://twitch.tv/antimamba777');
 });
 
 
