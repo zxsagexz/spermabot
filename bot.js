@@ -21,7 +21,7 @@ client.on('message', message => {
 });
 
 client.on('message', function(message) {
-        client.reply(message, "Заткнись");
+        client.reply(message, 'Заткнись');
 });
 
 client.on('ready', () => {
