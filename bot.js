@@ -21,7 +21,8 @@ client.on('message', message => {
 });
 
 client.on('message', function(message) {
-        client.reply(message, 'Заткнись');
+        // Don't forget to log the message!
+        client.sendMessage(message.channel, "Hello!");
 });
 
 client.on('ready', () => {
