@@ -20,9 +20,11 @@ client.on('message', message => {
   }
 });
 
-client.on('message', function(message) {
-        client.user.reply(message, "Hello!");
+client.on('message', message => {
+    message.reply('test');
+  }
 });
+
 
 client.on('ready', () => {
 client.user.setGame('ʕ•́ᴥ•̀ʔ СПЕРМА ХУЙ ГОВНО', 'https://www.twitch.tv/antimamba777');
