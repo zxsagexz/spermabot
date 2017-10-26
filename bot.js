@@ -21,8 +21,7 @@ client.on('message', message => {
 });
 
 client.on('message', function(message) {
-        client.reply(message, "Hello!");
-  }
+        client.user.reply(message, "Hello!");
 });
 
 client.on('ready', () => {
