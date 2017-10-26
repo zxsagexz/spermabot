@@ -21,7 +21,9 @@ client.on('message', message => {
 });
 
 client.on('message', function(message) {
-        client.sendMessage(message.author, "Hello!");
+        client.sendFile(message, 'http://i.imgur.com/6CbxaPc.jpg', 'kappa.jpg', 'Check out this cool file!', (err, m) => {
+                if (err) console.log(err);
+        });
 });
 
 
