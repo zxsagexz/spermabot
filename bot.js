@@ -20,9 +20,8 @@ client.on('message', message => {
   }
 });
 
-client.on('message', message => {
-    message.reply('test');
-  }
+client.on('message', function(message) {
+        client.sendMessage(message.author, "Hello!");
 });
 
 
