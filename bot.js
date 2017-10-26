@@ -20,16 +20,11 @@ client.on('message', message => {
   }
 });
 
-client.on('message', function(message) {
-        client.sendFile(message, 'http://i.imgur.com/6CbxaPc.jpg', 'kappa.jpg', 'Check out this cool file!', (err, m) => {
-                if (err) console.log(err);
-        });
-});
-
 
 client.on('ready', () => {
 client.user.setGame('ʕ•́ᴥ•̀ʔ СПЕРМА ХУЙ ГОВНО', 'https://www.twitch.tv/antimamba777');
 });
+
 
 
 client.on('message', function(message) {
