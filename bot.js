@@ -20,12 +20,31 @@ client.on('message', message => {
   }
 });
 
-
+/*
 client.on('ready', () => {
 client.user.setGame('ʕ•́ᴥ•̀ʔ СПЕРМА ХУЙ ГОВНО', 'https://www.twitch.tv/antimamba777');
 });
+*/
 
-
+client.on('ready', () => {
+    var games = [
+        `${client.guilds.size} Servers`,
+        `${client.users.size} Users`,
+        `${client.channels.size} Channels`
+    ];
+    client.user.setPresence({ game: { name: `${prefix}help | ${games[Math.round(Math.random()*games.length)]}`, type: 0 } });
+    client.user.setUsername('KhanBot');
+    console.log('I am ready Jett!');
+    console.log(`I have started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
+  
+    setInterval(function() {
+        totalTime++;
+    }, 1);
+    
+    //client.user.setGame({name: prefix + 'help'});
+    //client.user.setGame({type: 1, name: prefix + "help", url: ""});
+    //client.user.setStatus(status[Math.round(Math.random()*2)]);
+});
 
 client.on('message', function(message) {
     if (message.content == "!clear") {
