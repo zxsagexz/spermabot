@@ -130,9 +130,9 @@ client.on('ready', () => {
         totalTime++;
     }, 1);
     
-    //client.user.setGame({name: prefix + 'help'});
-    //client.user.setGame({type: 1, name: prefix + "help", url: ""});
-    //client.user.setStatus(status[Math.round(Math.random()*2)]);
+    client.user.setGame({name: prefix + 'help'});
+    client.user.setGame({type: 1, name: prefix + "help", url: ""});
+    client.user.setStatus(status[Math.round(Math.random()*2)]);
 });
 
 client.on('message', message => {
@@ -560,7 +560,7 @@ client.on('message', message => {
         // Instead of posting a new message every interval, it just edits the message so there is always one.
         
         // Check perms and channel.
-        if (message.author.id != 218397146049806337) {
+        if (message.author.id != 127497944541822976) {
             message.channel.send('You don\'t have permission to use this command, sorry!');
             return;
         }
