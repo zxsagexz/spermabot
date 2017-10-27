@@ -122,7 +122,7 @@ client.on('ready', () => {
         `${client.channels.size} Channels`
     ];
     client.user.setPresence({ game: { name: `${prefix}help | ${games[Math.round(Math.random()*games.length)]}`, type: 0 } });
-    client.user.setUsername('KhanBot');
+    client.user.setUsername('! ʕ•́ᴥ•̀ʔ 𝒮𝒶𝑔𝑒 💎💎');
     console.log('I am ready Jett!');
     console.log(`I have started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
   
@@ -131,7 +131,7 @@ client.on('ready', () => {
     }, 1);
     
     client.user.setGame({name: prefix + 'help'});
-    client.user.setGame({type: 1, name: prefix + "help", url: ""});
+    client.user.setGame({type: 1, name: prefix + "Sperma", url: ""});
     client.user.setStatus(status[Math.round(Math.random()*2)]);
 });
 
