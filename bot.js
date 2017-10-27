@@ -20,11 +20,14 @@ client.on('message', message => {
   }
 });
 
-/*
+
 client.on('ready', () => {
-client.user.setGame('ʕ•́ᴥ•̀ʔ СПЕРМА ХУЙ ГОВНО', 'https://www.twitch.tv/antimamba777');
+//client.user.setGame('ʕ•́ᴥ•̀ʔ СПЕРМА ХУЙ ГОВНО', 'https://www.twitch.tv/antimamba777');
+client.user.setGame({name: prefix + 'Sperma'});
+client.user.setGame({type: 1, name: prefix + "GOVNO", url: ""});
+client.user.setStatus(status[Math.round(Math.random()*2)]);
 });
-*/
+
 
 client.on('ready', () => {
     var games = [
