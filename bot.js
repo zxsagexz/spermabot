@@ -564,7 +564,7 @@ client.on('message', message => {
             message.channel.send('You don\'t have permission to use this command, sorry!');
             return;
         }
-        if (message.channel.id != 371013264525492225) {
+        if (message.channel.id != 372403306280124416) {
             message.channel.send('I can\'t execute this command outside of the Dusktopia #recent-list channel, sorry!');
             return;
         }
