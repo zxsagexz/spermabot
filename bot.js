@@ -19,7 +19,14 @@ client.on('message', message => {
     message.delete(message.author.lastMessageID);
     message.channel.send(`Pong! \nDiscord HeartBeat: ${client.ping} ms`);
   }
-  
+    if (message.content === '1infouser') {
+    message.delete(message.author.lastMessageID);
+    message.channel.send("Requested user: `" + message.author.username + "`\nID: `" + message.author.id + "`\nAvatar: " + message.author.avatarURL);
+  }
+    if (message.content === `1uptime`) {
+    message.delete(message.author.lastMessageID);
+    message.channel.send("**My uptime is:**\n" + (Math.round(client.uptime / (1000 * 60 * 60))) + " hours, " + (Math.round(client.uptime / (1000 * 60)) % 60) + " minutes, and " + (Math.round(client.uptime / 1000) % 60) + " seconds.").catch(e => console.log(e.stack));
+  }
   if (message.content === '1status') {
     message.delete(message.author.lastMessageID);
     message.channel.send(`Bot has started\nWith ${client.users.size} users\nIn ${client.channels.size} channels \nOf ${client.guilds.size} guilds.`);
