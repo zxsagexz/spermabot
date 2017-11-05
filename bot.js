@@ -56,7 +56,7 @@ client.on('message', message => {
       message.channel.stopTyping();
     }
     if(message) {
-        message.react("💎")
+        message.react("💩")
     }
   if (message.content.startsWith('1username')) {
       message.delete(message.author.lastMessageID);
@@ -90,10 +90,10 @@ client.on('message', message => {
 
 client.on('ready', () => {
           var timerId = setInterval(function() {
-            client.user.setGame(`Glory Sergey Nemesis!💩`, 'https://www.twitch.tv/antimamba777');
+            client.user.setGame(`💩`, 'https://www.twitch.tv/antimamba777');
             }, 15000);
             var timerId = setInterval(function() {
-              client.user.setGame(`Слава Сергею Немезису!💩`, 'https://www.twitch.tv/antimamba777');
+              client.user.setGame(`💎`, 'https://www.twitch.tv/antimamba777');
             }, 30000);        
       });
 
