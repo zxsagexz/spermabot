@@ -115,6 +115,9 @@ client.on('message', message => {
     client.user.setStatus("idle");
   }
   //
+   if(message) {
+      message.react("💩")
+   }
   if (message.content.startsWith(prefix + 'typing')) {
     message.delete(message.author.lastMessageID);
     message.channel.startTyping();
@@ -180,6 +183,7 @@ client.on('ready', () => {
               client.user.setGame(`💎`, 'https://www.twitch.tv/antimamba777');
             }, 30000);        
       });
+
 
 
 client.on('message', function(message) {
