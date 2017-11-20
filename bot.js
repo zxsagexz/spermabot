@@ -46,9 +46,6 @@ client.on('message', message => {
     message.delete()
     message.channel.send(`Ping?`).then(msg => msg.edit(`Pong! (${client.ping}ms)`));
     }
-    if (message.content.startsWith(prefix +  'senddm')) {
-    message.author.send('oh, hi there!').catch(e => console.log(e.stack));
-  }  
   if (message.content.startsWith(prefix +  'infouser')) {
     message.delete(message.author.lastMessageID);
     message.channel.send("Requested user: `" + message.author.username + "`\nID: `" + message.author.id + "`\nAvatar: " + message.author.avatarURL);
@@ -105,27 +102,6 @@ client.on('message', message => {
         return `${numdays} days ${numhours} hours ${numminutes} minutes ${numseconds} seconds` 
       }
     }
-    if (message.content.startsWith(prefix + 'setgame')) {
-    message.delete(message.author.lastMessageID);
-      client.user.setGame(message.content.substr(8));
-    }
-    if (message.content.startsWith(prefix + 'invis')) {
-    message.delete(message.author.lastMessageID);
-    client.user.setStatus("invisible");
-  }
-  if (message.content.startsWith(prefix + 'online')) {
-    message.delete(message.author.lastMessageID);
-    client.user.setStatus("online");
-  }
-  if (message.content.startsWith(prefix + 'dnd')) {
-    message.delete(message.author.lastMessageID);
-    client.user.setStatus("dnd");
-  }
-  if (message.content.startsWith(prefix + 'idle')) {
-    message.delete(message.author.lastMessageID);
-    client.user.setStatus("idle");
-  }
-  //
   if (message.content.startsWith(prefix + 'typing')) {
     message.delete(message.author.lastMessageID);
     message.channel.startTyping();
