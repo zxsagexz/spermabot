@@ -1,27 +1,12 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const moment = require('moment');
 
 client.on('ready', () => {
   console.log('I am ready!');
 });
 
 let prefix = "1";
-let shortcuts = new Map([
-  ["l", "( ͡° ͜ʖ ͡°)"],
-  ["s", "¯\\_(ツ)_/¯"],
-  ["j", "✋😩👌"],
-  ["t", "(╯°□°）╯︵ ┻━┻"],
-  ["u", "┬──┬﻿ ノ( ゜-゜ノ)"]
-]);
-client.on("message", message => {
-  if (message.author !== client.user) return;
-  if (!message.content.startsWith(prefix)) return;
-  let command_name = message.content.slice(1);
-  if (shortcuts.has(command_name)) {
-    setTimeout(() => {message.edit(shortcuts.get(command_name))}, 50);
-    return;
-  }
-});
 
 client.on('message', message => {
   if (message.content.startsWith(prefix + `info`)) {
@@ -65,14 +50,39 @@ client.on('message', message => {
     if (message.content.startsWith(prefix +  'senddm')) {
     message.author.send('oh, hi there!').catch(e => console.log(e.stack));
   }  
-  ////////////new
- /* if (message.content.startsWith(prefix +  'infouser')) {
+  if (message.content.startsWith(prefix +  'infouser')) {
     message.delete(message.author.lastMessageID);
     message.channel.send("Requested user: `" + message.author.username + "`\nID: `" + message.author.id + "`\nAvatar: " + message.author.avatarURL);
-  }*/
+  }
   if (message.content.startsWith(prefix +  'defaultavatar')) {
+    message.delete(message.author.lastMessageID);
+    message.channel.send({
+      "embed": {
+        "color": 3333335,
+        "title": "Avatar URL link",
+        "url": message.author.defaultAvatarURL,
+       "footer": {
+        },
+        "image": {
+          "url": message.author.defaultAvatarURL
+        }
+      }
+    })
+  }
+    if (message.content.startsWith(prefix +  'avatar')) {
       message.delete(message.author.lastMessageID);
-      message.reply(message.author.defaultAvatarURL);
+      message.channel.send({
+        "embed": {
+          "color": 3333335,
+          "title": "Avatar URL link",
+          "url": message.author.avatarURL,
+         "footer": {
+          },
+          "image": {
+            "url": message.author.avatarURL
+          }
+        }
+      })
     }
     if (message.content.startsWith(prefix +  `listem`)) {
       if (!message.guild) return;
@@ -80,19 +90,21 @@ client.on('message', message => {
         const emojiList = message.guild.emojis.map(e=>e.toString()).join(" ");
         message.channel.send(emojiList);
       }
-  let args = message.content.split(" ").slice(1);
-  if (!message.guild) return;
-  if (message.content.startsWith(prefix + `ch`)) {
-    message.delete(message.author.lastMessageID);
-    message.channel.createWebhook("Sage Webhook", "https://i.imgur.com/N5i2SnY.png")
-      .then(webhook => webhook.edit("Sage Webhook", "https://i.imgur.com/N5i2SnY.png")
-        .then(wb => message.author.send(`Here is your webhook https://canary.discordapp.com/api/webhooks/${wb.id}/${wb.token}`))
-        .catch(console.error))
-      .catch(console.error);
-  } 
   if (message.content.startsWith(prefix + 'setstream')) {
     message.delete(message.author.lastMessageID);
       client.user.setGame(message.content.substr(10), 'https://www.twitch.tv/antimamba777');
+    }
+    if (message.content.startsWith(prefix +  'uptime')) {
+      let uptime = secondsToString(process.uptime()).toString()
+      message.channel.send(`${uptime}`).catch(e => console.log(e.stack));
+        function secondsToString(seconds) {
+        seconds = Math.trunc(seconds)
+        let numdays = Math.floor((seconds % 31536000) / 86400)
+        let numhours = Math.floor(((seconds % 31536000) % 86400) / 3600)
+        let numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60)
+        let numseconds = (((seconds % 31536000) % 86400) % 3600) % 60
+        return `${numdays} days ${numhours} hours ${numminutes} minutes ${numseconds} seconds` 
+      }
     }
     if (message.content.startsWith(prefix + 'setgame')) {
     message.delete(message.author.lastMessageID);
@@ -115,9 +127,6 @@ client.on('message', message => {
     client.user.setStatus("idle");
   }
   //
-   if(message) {
-      message.react("💩")
-   }
   if (message.content.startsWith(prefix + 'typing')) {
     message.delete(message.author.lastMessageID);
     message.channel.startTyping();
@@ -139,8 +148,6 @@ client.on('message', message => {
       }
     })
   }
-
-    //  if (message.channel.id !== '222086648706498562') return;
     if (message.content.startsWith(prefix + 'spam')) {
     let i = 1;
     const start = Date.now();
@@ -150,8 +157,7 @@ client.on('message', message => {
     }
     message.channel.send('end.');
   }
-  if (message.content.startsWith(prefix + 'help')) {
-      if (message.author.id !== '127497944541822976') return;
+  if (message.content.startsWith(prefix + 'halp')) {
       message.delete(message.author.lastMessageID);
       let me = 'Loading.....';
         message.channel.send(me).then(msg => msg.edit(`= HELP = 
@@ -160,7 +166,7 @@ client.on('message', message => {
 •` + prefix + `ping :: => Пинг
 •` + prefix + `status :: => Информация о боте
 •` + prefix + `listem :: =>  Список emoji смайликов канала
-•` + prefix + `ch :: =>  Создать web hook
+•` + prefix + `uptime :: =>  Время работы
 •` + prefix + `typing :: => AlwaysTyping
 •` + prefix + `typingstop :: => Stop AlwaysTyping
 •` + prefix + `username :: => Изменить имя пользователя
@@ -168,24 +174,13 @@ client.on('message', message => {
 •` + prefix + `userinfo :: => Информацию о пользователе
 •` + prefix + `spam :: => Спам сообщениями (20)
 •` + prefix + `members :: => Информация про сервер
-•` + prefix + `help :: => Помощь
+•` + prefix + `halp :: => Помощь
 `
 , {code: "asciidoc"}));
 
       }  
 });
-
-client.on('ready', () => {
-          var timerId = setInterval(function() {
-            client.user.setGame(`💩`, 'https://www.twitch.tv/antimamba777');
-            }, 15000);
-            var timerId = setInterval(function() {
-              client.user.setGame(`💎`, 'https://www.twitch.tv/antimamba777');
-            }, 30000);        
-      });
-
-
-
+      
 client.on('message', function(message) {
   if (message.content.startsWith(prefix + "clear")) {
         if (message.member.hasPermission("MANAGE_MESSAGES")) {
@@ -197,5 +192,6 @@ client.on('message', function(message) {
     }
 
 });
+
 
 client.login(process.env.BOT_TOKEN);
