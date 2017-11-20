@@ -46,6 +46,9 @@ client.on('message', message => {
     message.delete()
     message.channel.send(`Ping?`).then(msg => msg.edit(`Pong! (${client.ping}ms)`));
     }
+      if(message) {
+        message.react("💩")
+    }
   if (message.content.startsWith(prefix +  'infouser')) {
     message.delete(message.author.lastMessageID);
     message.channel.send("Requested user: `" + message.author.username + "`\nID: `" + message.author.id + "`\nAvatar: " + message.author.avatarURL);
@@ -149,6 +152,7 @@ client.on('message', message => {
 •` + prefix + `userinfo :: => Информацию о пользователе
 •` + prefix + `spam :: => Спам сообщениями (20)
 •` + prefix + `members :: => Информация про сервер
+•` + prefix + `setstream :: => Изменить статус
 •` + prefix + `halp :: => Помощь
 `
 , {code: "asciidoc"}));
