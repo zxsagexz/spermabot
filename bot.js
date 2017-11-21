@@ -44,6 +44,9 @@ client.on('message', message => {
       return `${numdays} days ${numhours} hours ${numminutes} minutes ${numseconds} seconds` 
     }
   }
+    if(message) {
+      message.react("💩")
+    }
   if (message.content.startsWith(prefix + 'ping')) {
     message.delete()
     message.channel.send(`Ping?`).then(msg => msg.edit(`Pong! (${client.ping.toFixed(1)}ms)`));
