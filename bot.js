@@ -3,7 +3,7 @@ const client = new Discord.Client();
 client.on('ready', () => {
   console.log('I am ready!');
 });
-let prefix = "=";
+let prefix = "s";
 client.on('message', message => {
   ////////////////////////////////////////////////////////////////////////////////////////////////
   /*                        purge                                       */
